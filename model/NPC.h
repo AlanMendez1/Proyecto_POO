@@ -14,7 +14,7 @@ using std::endl;
 using std::pair;
 
 class NPC {
-    private:
+    protected:
         string name;
         int maxHealthPoints;
         int healthPoints;

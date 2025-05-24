@@ -7,3 +7,7 @@ NPC::NPC(){
 NPC::~NPC(){
     
 }
+
+void NPC::updateHealthPoints(){
+    
+};

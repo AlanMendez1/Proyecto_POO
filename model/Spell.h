@@ -2,7 +2,7 @@
 #define SPELL_H
 
 #include <string>
-#include <vector>
+#include <vector> 
 #include <iostream>
 
 using std::string;
