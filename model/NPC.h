@@ -24,6 +24,8 @@ class NPC {
         NPC();
         ~NPC();
         void updateHealthPoints();
+        pair<int, int> getPosition();
+        void setPosition(pair<int, int> pos);
 };
 
 #endif

@@ -13,7 +13,7 @@ Player::Player(string name, vector<Spell*> spells, string sprite){
     this->maxHealthPoints = 50;
     this->healthPoints = 50;
     this->level = 1;
-    this->position = {0, 0};
+    this->position = {1, 1};
     this->attackPoints = 10;
     this->maxMagicPoints = 10;
     this->magicPoints = 10;
@@ -74,11 +74,24 @@ void Player::move(){
     cin >> e;
     cout << "\nYour character was ";
 // Using 3 char type, Cause up down right left consist with 3 character
+    int playerIndex = this->position.second * 20 + this->position.first;
     if ((c==27)&&(d==91)) {
-        if (e==65) { cout << "UP";}
-        if (e==66) { cout << "DOWN";}
-        if (e==67) { cout << "RIGHT";}
-        if (e==68) { cout << "LEFT";}
+        if (e==65) { 
+            cout << "UP";
+            this->position = {this->position.first, this->position.second - 1};
+        }
+        if (e==66) { 
+            cout << "DOWN"; 
+            this->position = {this->position.first, this->position.second + 1};
+        }
+        if (e==67) { 
+            cout << "RIGHT"; 
+            this->position = {this->position.first + 1, this->position.second};
+        }
+        if (e==68) { 
+            cout << "LEFT"; 
+            this->position = {this->position.first - 1, this->position.second};
+        }
         cout << endl;
     }
 }

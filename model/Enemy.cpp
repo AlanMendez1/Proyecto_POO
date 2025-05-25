@@ -8,7 +8,7 @@ Enemy::~Enemy(){
 
 };
 
-Enemy::Enemy(string name, int maxHealthPoint, int healthPoints, int level, pair<int, int> position, int attackPoints, int magicPoints, vector<Spell> spells, string sprite){
+Enemy::Enemy(string name, int maxHealthPoint, int healthPoints, int level, pair<int, int> position, int attackPoints, int magicPoints, vector<Spell*> spells, string sprite){
     this->name = name;
     this->maxHealthPoints = maxHealthPoint;
     this->healthPoints = healthPoints;
@@ -27,10 +27,10 @@ int Enemy::getDamage(){
 pair<int, Effect> Enemy::useSpell(){
     int random = rand() % 2; 
     pair<int, Effect> attack;
-    Spell usedSpell = this->spells[random];
-    if(magicPoints >= usedSpell.getManaCost()){
-        magicPoints = magicPoints - usedSpell.getManaCost();
-        attack = {usedSpell.getBaseDamage() * this->attackPoints, usedSpell.getEffect()};
+    Spell* usedSpell = this->spells[random];
+    if(magicPoints >= usedSpell->getManaCost()){
+        magicPoints = magicPoints - usedSpell->getManaCost();
+        attack = {usedSpell->getBaseDamage() * this->attackPoints, usedSpell->getEffect()};
     } else {
         attack = {0, NOEFFECT};
         cout << this->name << " can't use this spell, NOT ENOUGH MANA!" << endl;
@@ -49,4 +49,8 @@ bool Enemy::checkAlive(){
 void Enemy::movement(int x, int y){
     this->position.first = this->position.first + x;
     this->position.second = this->position.second + y;
+}
+
+void Enemy::showSprite(){
+    cout << "\033[1;31m" << this->sprite << "\033[0m";
 }

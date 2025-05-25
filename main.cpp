@@ -7,7 +7,7 @@ using std::cin;
 using std::string;
 
 int main(){
-    Game* game = new Game("LAS HORMIGAS");
+    Game* game = new Game("PARADIS ISLAND!");
     game->startGame();
     return 0;
 }
