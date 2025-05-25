@@ -46,9 +46,19 @@ bool Enemy::checkAlive(){
     return this->healthPoints > 0;
 };
 
-void Enemy::movement(int x, int y){
-    this->position.first = this->position.first + x;
-    this->position.second = this->position.second + y;
+void Enemy::movement(){
+    int random = rand() % 4; 
+    switch(random){
+        case 0: this->position.second = this->position.second - 1;
+                break;
+        case 1: this->position.first = this->position.first + 1;
+                break;
+        case 2: this->position.second = this->position.second + 1;
+                break;
+        case 3: this->position.first = this->position.first - 1;
+                break;
+        default: break;
+    }
 }
 
 void Enemy::showSprite(){

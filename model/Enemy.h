@@ -31,7 +31,7 @@ class Enemy: public NPC{
         pair<int, Effect> useSpell();
         void receiveDamage(int dmg);
         bool checkAlive();
-        void movement(int x, int y);
+        void movement();
         void showSprite();
 };
 
