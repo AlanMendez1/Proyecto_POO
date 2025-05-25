@@ -26,6 +26,8 @@ class Pickup{
         ~Pickup();
         Pickup(string sprite, int value, pair<int, int> position);
         pair<int, int> getPosition();
-}
+        void showSprite();
+        int getExperience();
+};
 
 #endif

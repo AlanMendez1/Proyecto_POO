@@ -15,9 +15,11 @@ Game::Game(string name){
 
 void Game::startGame(){
     pair<int, int> oldPos, newPos, oldEnemyPos, newEnemyPos;
-    int newIndex, oldEnemyIndex, enemyIndex, oldIndex, newEnemyIndex;
-    bool battleFlag, win = false, lose = false;
+    int newIndex, oldEnemyIndex, oldIndex, newEnemyIndex, itemIndex, itemToDelete;
+    bool battleFlag, win = false, lose = false, pickedFlag;
     cout << "This is " << this->name << ", the adventure begins..." << endl;
+    Pickup* pickup1 = new Pickup("\033[1;33m☻\033[0m", 10, {3, 3});
+    vector<Pickup*> pickups = {pickup1};
     Spell* sp1 = new Spell("Light ray", "Rayitos", 15, 5, NOEFFECT, "fff");
     vector<Spell*> j1Spells = {sp1}; 
     Player* j1 = new Player("Ray", j1Spells, "§");
@@ -37,6 +39,7 @@ void Game::startGame(){
             j1->setPosition(oldPos);
         }
         battleFlag = false;
+        pickedFlag = false;
         for(int i = 0; i < enemies.size(); i++){
             oldEnemyPos = enemies[i]->getPosition();
             oldEnemyIndex = oldEnemyPos.second * 20 + oldEnemyPos.first;
@@ -60,6 +63,17 @@ void Game::startGame(){
                 enemies[i]->setPosition(oldEnemyPos);
             }
         }
+        for(int j = 0; j < pickups.size(); j++){
+            itemIndex = pickups[j]->getPosition().second * 20 + pickups[j]->getPosition().first;
+            if(newIndex == itemIndex){
+                itemToDelete = j;
+                pickedFlag = true;
+                j1->levelUp(pickups[j]->getExperience());
+            }
+        }
+        if(pickedFlag){
+            pickups.erase(pickups.begin() + itemToDelete);
+        }
         if(battleFlag){
             // TO DO BATTLE
             cout << battleFlag << endl;
@@ -67,7 +81,7 @@ void Game::startGame(){
         }
 
         
-        board->drawMap(j1, enemies);
+        board->drawMap(j1, enemies, pickups);
     }
 };
 

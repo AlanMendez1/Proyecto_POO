@@ -17,3 +17,11 @@ Pickup::Pickup(string sprite, int value, pair<int, int> position){
 pair<int, int> Pickup::getPosition(){
     return this->position;
 }
+
+void Pickup::showSprite(){
+    cout << this->sprite;
+}
+
+int Pickup::getExperience(){
+    return this->value;
+}
