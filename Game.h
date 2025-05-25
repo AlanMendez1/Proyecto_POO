@@ -3,6 +3,7 @@
 
 #include "model/Player.h"
 #include "model/Enemy.h"
+#include "model/Pickup.h"
 #include "model/Spell.h"
 #include "model/Map.h"
 

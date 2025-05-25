@@ -95,3 +95,12 @@ void Player::move(){
         cout << endl;
     }
 }
+
+void Player::levelUp(int exp){
+    this->experience = this->experience + exp;
+    if(this->experience >= this->experienceToLvlUp){
+        this->experience = this->experience - this->experienceToLvlUp;
+        this->experienceToLvlUp = this->experienceToLvlUp + 15;
+        this->level = this->level + 1;
+    }
+}

@@ -25,6 +25,8 @@ class Player: public NPC {
         int attackPoints;
         int maxMagicPoints;
         int magicPoints;
+        int experience;
+        int experienceToLvlUp;
         float armor;
         string sprite;
         vector<Spell*> spells;
@@ -39,6 +41,7 @@ class Player: public NPC {
         int attack();
         int useSpell();
         void move();
+        void levelUp(int exp);
 };
 
 #endif

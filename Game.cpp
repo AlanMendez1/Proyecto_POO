@@ -44,14 +44,17 @@ void Game::startGame(){
             newEnemyPos = enemies[i]->getPosition();
             newEnemyIndex = newEnemyPos.second * 20 + newEnemyPos.first;
             if(newIndex == oldEnemyIndex){
+                // cout << "AQUI1" << endl;
                 j1->setPosition(oldPos);
                 enemies[i]->setPosition(oldEnemyPos);
                 battleFlag = true;
             } else if (oldIndex == newEnemyIndex){
+                // cout << "AQUI2" << endl;
                 j1->setPosition(oldPos);
                 enemies[i]->setPosition(oldEnemyPos);
                 battleFlag = true;
-            } else if (newIndex = newEnemyIndex){
+            } else if (newIndex == newEnemyIndex){
+                // cout << "AQUI3" << endl;
                 battleFlag = true;
             } else if(board->collision(newEnemyIndex)){
                 enemies[i]->setPosition(oldEnemyPos);
@@ -59,6 +62,7 @@ void Game::startGame(){
         }
         if(battleFlag){
             // TO DO BATTLE
+            cout << battleFlag << endl;
             cout << "BATTLE STARTED!" << endl;
         }
 
