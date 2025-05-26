@@ -25,7 +25,7 @@ int Enemy::getDamage(){
 };
 
 pair<int, Effect> Enemy::useSpell(){
-    int random = rand() % 2; 
+    int random = rand() % 1; 
     pair<int, Effect> attack;
     Spell* usedSpell = this->spells[random];
     if(magicPoints >= usedSpell->getManaCost()){

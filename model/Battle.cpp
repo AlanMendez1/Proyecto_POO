@@ -34,22 +34,22 @@ void Battle::startBattle(){
         cout << player->getName() << endl;
         if(player->getHealthPoints() == player->getMaxHealthPoints()){
             string life(player->getHealthPoints()/10, '#');
-            cout << '[' << life << ']' << endl;
+            cout << '[' << life << ']' << player->getMaxHealthPoints() << "/" << player->getMaxHealthPoints() << endl;
         } else{
             string life(player->getHealthPoints()/10, '#');
             string lifeRemaining((player->getMaxHealthPoints() - player->getHealthPoints())/10, ' ');
-            cout << '[' << life << lifeRemaining << ']' << endl;
+            cout << '[' << life << lifeRemaining << ']' << player->getHealthPoints() << "/" << player->getMaxHealthPoints() << endl;
         }
 
         cout << "====================================================" << endl;
         cout << enemy->getName() << endl;
         if(enemy->getHealthPoints() == enemy->getMaxHealthPoints()){
             string life(enemy->getHealthPoints()/10, '#');
-            cout << '[' << life << ']' << endl;
+            cout << '[' << life << ']' << enemy->getMaxHealthPoints() << "/" << enemy->getMaxHealthPoints() << endl;
         } else{
             string life(enemy->getHealthPoints()/10, '#');
             string lifeRemaining((enemy->getMaxHealthPoints() - enemy->getHealthPoints())/10, ' ');
-            cout << '[' << life << lifeRemaining << ']' << endl;
+            cout << '[' << life << lifeRemaining << ']' << enemy->getHealthPoints() << "/" << enemy->getMaxHealthPoints() << endl;
         }
 
         if(usedEnemySpell.second != PARALYZED){
@@ -59,12 +59,16 @@ void Battle::startBattle(){
             switch(select){
                 case 1: dmgToEnemy = player->attack();
                         enemy->receiveDamage(dmgToEnemy);
+                        cout << "LE HICISTE " << dmgToEnemy << " DE DANIO A " << enemy->getName() << endl;
                         if(!enemy->checkAlive()){
                             battleEnd = true;
                             this->win = true;
+                            cout << "ganeeeee" << endl;
                         }
                         break;
                 case 2: dmgToEnemy = player->useSpell();
+                        enemy->receiveDamage(dmgToEnemy);
+                        cout << "LE HICISTE " << dmgToEnemy << " DE DANIO A " << enemy->getName() << endl;
                         if(!enemy->checkAlive()){
                             battleEnd = true;
                             this->win = true;
@@ -80,24 +84,29 @@ void Battle::startBattle(){
         if(usedEnemySpell.second == MAGICLESS){
             player->setMana(oldMana);
         }
-        random = rand() % 2;
-        switch(random){
-            case 0: dmgToPlayer = enemy->getDamage();
-                    player->receiveDamage(dmgToPlayer);
-                    if(!player->checkAlive()){
-                        battleEnd = true;
-                    }
-                    break;
-            case 1: usedEnemySpell = enemy->useSpell();
-                    player->receiveDamage(usedEnemySpell.first);
-                    cont = 2;
-                    if(!player->checkAlive()){
-                        battleEnd = true;
-                    }
-                    break;
-            default: break;
+        if(!battleEnd){
+            random = rand() % 2;
+            switch(random){
+                case 0: dmgToPlayer = enemy->getDamage();
+                        player->receiveDamage(dmgToPlayer);
+                        cout << "Recibiste " << dmgToPlayer << " de danio" << endl;
+                        if(!player->checkAlive()){
+                            battleEnd = true;
+                        }
+                        break;
+                case 1: cout << "es por aca owo" << endl;
+                        usedEnemySpell = enemy->useSpell();
+                        cout << "salgo del hechizou" << endl;
+                        player->receiveDamage(usedEnemySpell.first);
+                        cout << "Recibiste " << usedEnemySpell.first << " de danio" << endl;
+                        cont = 2;
+                        if(!player->checkAlive()){
+                            battleEnd = true;
+                        }
+                        break;
+                default: break;
+            }
         }
-
     }
 }
 

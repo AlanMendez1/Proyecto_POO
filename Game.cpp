@@ -28,7 +28,7 @@ void Game::startGame(){
     vector<Enemy*> enemies = {enemy1}; 
     Map* board = new Map();
     // GAME LOOP
-    while(!win || !lose){
+    while(!win && !lose){
         oldPos = j1->getPosition();
         oldIndex = oldPos.second * 20 + oldPos.first;
         j1->move();
@@ -83,11 +83,23 @@ void Game::startGame(){
             Battle* battle = new Battle(j1, enemies[enemyToFight]);
             cout << "BATTLE STARTED!" << endl;
             battle->startBattle();
+            if(battle->checkWin()){
+                cout << "HAS GANADO!" << endl;
+                j1->levelUp(enemies[enemyToFight]->getLevel() * 10);
+                cout << "Has obtenido " << enemies[enemyToFight]->getLevel() * 10 << " de experiencia!" << endl;
+                enemies.erase(enemies.begin() + enemyToFight);
+            } else if(!j1->checkAlive()){
+                cout << "HAS PERDIDOOOOOOO! :(" << endl;
+                lose = true;
+            } else{
+                cout << "Escapaste con exito" << endl;
+            }
         }
 
         
         board->drawMap(j1, enemies, pickups);
     }
+    cout << "SE ACABOO" << endl;
 };
 
 void Game::gameLoop(){ 
