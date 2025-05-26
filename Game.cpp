@@ -20,7 +20,7 @@ void Game::startGame(){
     cout << "This is " << this->name << ", the adventure begins..." << endl;
     Pickup* pickup1 = new Pickup("\033[1;33m☻\033[0m", 10, {3, 3});
     vector<Pickup*> pickups = {pickup1};
-    Spell* sp1 = new Spell("Light ray", "Rayitos", 15, 5, NOEFFECT, "fff");
+    Spell* sp1 = new Spell("Light ray", "Rayitos", 15, 5, NOEFFECT);
     vector<Spell*> j1Spells = {sp1}; 
     Player* j1 = new Player("Ray", j1Spells, "§");
     j1->showSprite();

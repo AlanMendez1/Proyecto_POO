@@ -26,13 +26,10 @@ class Spell {
         int baseDamage;
         int manaCost;
         Effect effect;
-        string visualEffect;
     public:
         Spell();
         ~Spell();
-        Spell(string name, string description, int baseDamage, int manaCost, Effect effect, string visualEffect);
-        void showSpell();
-        void showEffect();
+        Spell(string name, string description, int baseDamage, int manaCost, Effect effect);
         int getBaseDamage();
         int getManaCost();
         Effect getEffect();

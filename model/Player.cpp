@@ -41,17 +41,14 @@ int Player::useSpell(){
     int opc;
     cout << "Selecciona un hechizo:\n";
     for(int i = 0; i < spells.size(); i++){
-        cout << i + 1;
-        spells[i]->showSpell();
+        cout << i + 1 << ". " << spells[i]->getName() << endl;;
     }
     cin >> opc;
-    spells[opc - 1]->showEffect();
     int manaCost = spells[opc - 1]->getManaCost();
     int damage = spells[opc - 1]->getBaseDamage();
     if(manaCost >= this->magicPoints){
         this->magicPoints = this->magicPoints - manaCost;
         damage = damage + this->attackPoints;
-        spells[opc - 1]->showEffect();
         cout << "Acabas de utilizar " << spells[opc - 1]->getName() << endl;
     } else{
         cout << "No tienes mana para utilizar este hechizo." << endl;
