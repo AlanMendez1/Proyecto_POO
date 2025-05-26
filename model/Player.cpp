@@ -41,7 +41,7 @@ int Player::useSpell(){
     int opc;
     cout << "Selecciona un hechizo:\n";
     for(int i = 0; i < spells.size(); i++){
-        cout << i + 1 << ". " << spells[i]->getName() << endl;;
+        cout << i + 1 << ". " << spells[i]->getName() << " Mana: " << spells[i]->getManaCost() << endl;;
     }
     cin >> opc;
     int manaCost = spells[opc - 1]->getManaCost();
@@ -101,6 +101,11 @@ void Player::levelUp(int exp){
         this->experienceToLvlUp = this->experienceToLvlUp + 15;
         this->level = this->level + 1;
     }
+    this->maxHealthPoints = this->maxHealthPoints + 10;
+    this->healthPoints = this->maxHealthPoints;
+    this->maxMagicPoints = this->maxMagicPoints + 10;
+    this->magicPoints = this->maxMagicPoints;
+    cout << "ACABAS DE SUBIR A NIVEL " << this->level << endl;
 }
 
 void Player::setMana(int newMana){
@@ -109,4 +114,8 @@ void Player::setMana(int newMana){
 
 int Player::getMana(){
     return this->magicPoints;
+}
+
+int Player::getMaxMana(){
+    return this->maxMagicPoints;
 }

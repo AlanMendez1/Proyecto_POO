@@ -44,6 +44,7 @@ class Player: public NPC {
         void levelUp(int exp);
         void setMana(int newMana);
         int getMana();
+        int getMaxMana();
 };
 
 #endif

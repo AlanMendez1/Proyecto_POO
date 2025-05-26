@@ -78,7 +78,7 @@ void Game::startGame(){
     Spell* sp9  = new Spell("Arcane Seal",    "Sello arcano que bloquea magia",  0, 12,  MAGICLESS);
     Spell* sp10 = new Spell("Nullify",        "Anulación de encantamientos",     0,  4,  MAGICLESS);
 
-    vector<Spell*> j1Spells = {sp1}; 
+    vector<Spell*> j1Spells = {sp, sp1, sp3}; 
     vector<Spell*> goblinSpells    = { sp1,       sp2       }; // NOEFFECT
     vector<Spell*> skeletonSpells  = { sp2,       sp1       }; // NOEFFECT
     vector<Spell*> fireElemSpells  = { sp3,       sp2       }; // NOEFFECT
@@ -101,14 +101,15 @@ void Game::startGame(){
     Enemy* enemy8  = new Enemy("Stone Ant",      60, 60, 8, { 8, 4}, 15,  0, golemSpells,    "°");
     Enemy* enemy9  = new Enemy("Arcane Ant",    35, 35, 7, { 9, 9},  5, 25, wraithSpells,   "°");
     Enemy* enemy10 = new Enemy("Elite Ant",        20, 20, 5, { 2, 3}, 10, 10, antSpells,      "°");
+    Enemy* king = new Enemy("Fungus King", 100, 100, 10, {18, 18}, 30, 30, snakeSpells, "■");
         vector<Enemy*> enemies = {
         enemy1, enemy2, enemy3, enemy4, enemy5,
-        enemy6, enemy7, enemy8, enemy9, enemy10
+        enemy6, enemy7, enemy8, enemy9, enemy10, king
     };
 
     Player* j1 = new Player("Ray", j1Spells, "§");
     j1->showSprite();
-    
+
     Map* board = new Map();
     // GAME LOOP
     while(!win && !lose){
@@ -182,7 +183,7 @@ void Game::startGame(){
         
         board->drawMap(j1, enemies, pickups);
     }
-    cout << "SE ACABOO" << endl;
+    cout << "\nSE ACABO" << endl;
 };
 
 void Game::gameLoop(){ 

@@ -33,6 +33,7 @@ class Enemy: public NPC{
         bool checkAlive();
         void movement();
         void showSprite();
+        int getMana();
 };
 
 #endif

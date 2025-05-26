@@ -25,7 +25,7 @@ int Enemy::getDamage(){
 };
 
 pair<int, Effect> Enemy::useSpell(){
-    int random = rand() % 1; 
+    int random = rand() % 2; 
     pair<int, Effect> attack;
     Spell* usedSpell = this->spells[random];
     if(magicPoints >= usedSpell->getManaCost()){
@@ -64,4 +64,8 @@ void Enemy::movement(){
 
 void Enemy::showSprite(){
     cout << "\033[1;31m" << this->sprite << "\033[0m";
+}
+
+int Enemy::getMana(){
+    return this->magicPoints;
 }

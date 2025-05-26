@@ -33,23 +33,35 @@ void Battle::startBattle(){
         cout << "====================================================" << endl;
         cout << player->getName() << endl;
         if(player->getHealthPoints() == player->getMaxHealthPoints()){
+            cout << "HEALTH: " << endl;
             string life(player->getHealthPoints()/10, '#');
             cout << '[' << life << ']' << player->getMaxHealthPoints() << "/" << player->getMaxHealthPoints() << endl;
+            cout << "MANA: " << endl;
+            cout << player->getMana() << "/" << player->getMaxMana() << endl;
         } else{
+            cout << "HEALTH: " << endl;
             string life(player->getHealthPoints()/10, '#');
             string lifeRemaining((player->getMaxHealthPoints() - player->getHealthPoints())/10, ' ');
             cout << '[' << life << lifeRemaining << ']' << player->getHealthPoints() << "/" << player->getMaxHealthPoints() << endl;
+            cout << "MANA: " << endl;
+            cout << player->getMana() << "/" << player->getMaxMana() << endl;
         }
 
         cout << "====================================================" << endl;
         cout << enemy->getName() << endl;
         if(enemy->getHealthPoints() == enemy->getMaxHealthPoints()){
+            cout << "HEALTH: " << endl;
             string life(enemy->getHealthPoints()/10, '#');
             cout << '[' << life << ']' << enemy->getMaxHealthPoints() << "/" << enemy->getMaxHealthPoints() << endl;
+            cout << "MANA: " << endl;
+            cout << enemy->getMana() << endl;
         } else{
+            cout << "HEALTH: " << endl;
             string life(enemy->getHealthPoints()/10, '#');
             string lifeRemaining((enemy->getMaxHealthPoints() - enemy->getHealthPoints())/10, ' ');
             cout << '[' << life << lifeRemaining << ']' << enemy->getHealthPoints() << "/" << enemy->getMaxHealthPoints() << endl;
+            cout << "MANA: " << endl;
+            cout << enemy->getMana() << endl;
         }
 
         if(usedEnemySpell.second != PARALYZED){
@@ -94,9 +106,7 @@ void Battle::startBattle(){
                             battleEnd = true;
                         }
                         break;
-                case 1: cout << "es por aca owo" << endl;
                         usedEnemySpell = enemy->useSpell();
-                        cout << "salgo del hechizou" << endl;
                         player->receiveDamage(usedEnemySpell.first);
                         cout << "Recibiste " << usedEnemySpell.first << " de danio" << endl;
                         cont = 2;
