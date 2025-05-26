@@ -26,6 +26,10 @@ class NPC {
         void updateHealthPoints();
         pair<int, int> getPosition();
         void setPosition(pair<int, int> pos);
+        string getName();
+        int getMaxHealthPoints();
+        int getHealthPoints();
+        int getLevel();
 };
 
 #endif

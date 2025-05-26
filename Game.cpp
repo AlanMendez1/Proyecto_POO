@@ -15,7 +15,7 @@ Game::Game(string name){
 
 void Game::startGame(){
     pair<int, int> oldPos, newPos, oldEnemyPos, newEnemyPos;
-    int newIndex, oldEnemyIndex, oldIndex, newEnemyIndex, itemIndex, itemToDelete;
+    int newIndex, oldEnemyIndex, oldIndex, newEnemyIndex, itemIndex, itemToDelete, enemyToFight;
     bool battleFlag, win = false, lose = false, pickedFlag;
     cout << "This is " << this->name << ", the adventure begins..." << endl;
     Pickup* pickup1 = new Pickup("\033[1;33m☻\033[0m", 10, {3, 3});
@@ -51,14 +51,17 @@ void Game::startGame(){
                 j1->setPosition(oldPos);
                 enemies[i]->setPosition(oldEnemyPos);
                 battleFlag = true;
+                enemyToFight = i;
             } else if (oldIndex == newEnemyIndex){
                 // cout << "AQUI2" << endl;
                 j1->setPosition(oldPos);
                 enemies[i]->setPosition(oldEnemyPos);
                 battleFlag = true;
+                enemyToFight = i;
             } else if (newIndex == newEnemyIndex){
                 // cout << "AQUI3" << endl;
                 battleFlag = true;
+                enemyToFight = i;
             } else if(board->collision(newEnemyIndex)){
                 enemies[i]->setPosition(oldEnemyPos);
             }
@@ -77,7 +80,9 @@ void Game::startGame(){
         if(battleFlag){
             // TO DO BATTLE
             cout << battleFlag << endl;
+            Battle* battle = new Battle(j1, enemies[enemyToFight]);
             cout << "BATTLE STARTED!" << endl;
+            battle->startBattle();
         }
 
         

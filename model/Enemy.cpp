@@ -31,9 +31,10 @@ pair<int, Effect> Enemy::useSpell(){
     if(magicPoints >= usedSpell->getManaCost()){
         magicPoints = magicPoints - usedSpell->getManaCost();
         attack = {usedSpell->getBaseDamage() * this->attackPoints, usedSpell->getEffect()};
+        cout << this->name << " acaba de utilizar " << usedSpell->getName() << endl;
     } else {
         attack = {0, NOEFFECT};
-        cout << this->name << " can't use this spell, NOT ENOUGH MANA!" << endl;
+        cout << this->name << " no puede utilizar este hechizo, FALTA MANAAA!" << endl;
     }
     return attack;
 };

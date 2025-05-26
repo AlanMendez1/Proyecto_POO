@@ -52,8 +52,9 @@ int Player::useSpell(){
         this->magicPoints = this->magicPoints - manaCost;
         damage = damage + this->attackPoints;
         spells[opc - 1]->showEffect();
+        cout << "Acabas de utilizar " << spells[opc - 1]->getName() << endl;
     } else{
-        cout << "You don't have enough mana to use this spell.";
+        cout << "No tienes mana para utilizar este hechizo." << endl;
         damage = 0;
     }
     return damage;
@@ -103,4 +104,12 @@ void Player::levelUp(int exp){
         this->experienceToLvlUp = this->experienceToLvlUp + 15;
         this->level = this->level + 1;
     }
+}
+
+void Player::setMana(int newMana){
+    this->magicPoints = newMana;
+}
+
+int Player::getMana(){
+    return this->magicPoints;
 }

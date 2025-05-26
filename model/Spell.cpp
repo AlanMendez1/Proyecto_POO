@@ -31,3 +31,7 @@ int Spell::getManaCost(){
 Effect Spell::getEffect(){
 
 };
+
+string Spell::getName(){
+    return this->name;
+};

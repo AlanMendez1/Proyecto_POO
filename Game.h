@@ -6,6 +6,7 @@
 #include "model/Pickup.h"
 #include "model/Spell.h"
 #include "model/Map.h"
+#include "model/Battle.h"
 
 #include <string>
 #include <vector>

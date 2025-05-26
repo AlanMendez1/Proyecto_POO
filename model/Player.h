@@ -42,6 +42,8 @@ class Player: public NPC {
         int useSpell();
         void move();
         void levelUp(int exp);
+        void setMana(int newMana);
+        int getMana();
 };
 
 #endif

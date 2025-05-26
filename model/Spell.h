@@ -36,6 +36,7 @@ class Spell {
         int getBaseDamage();
         int getManaCost();
         Effect getEffect();
+        string getName();
 };
 
 #endif
