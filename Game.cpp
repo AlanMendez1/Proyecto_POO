@@ -187,10 +187,18 @@ void Game::startGame(){
             }
         }
 
+        if(!king->checkAlive()){
+            win = true;
+        }
+
         
         board->drawMap(j1, enemies, pickups, allies);
     }
-    cout << "\nSE ACABO" << endl;
+    if(lose){
+        cout << "\nSE ACABO PERDISTEEEEE" << endl;
+    } else if(win){
+        cout << "\nGANASTEEEEE" << endl;
+    }
 };
 
 void Game::gameLoop(){ 
