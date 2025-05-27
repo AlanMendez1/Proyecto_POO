@@ -46,7 +46,7 @@ int Player::useSpell(){
     cin >> opc;
     int manaCost = spells[opc - 1]->getManaCost();
     int damage = spells[opc - 1]->getBaseDamage();
-    if(manaCost >= this->magicPoints){
+    if(manaCost <= this->magicPoints){
         this->magicPoints = this->magicPoints - manaCost;
         damage = damage + this->attackPoints;
         cout << "Acabas de utilizar " << spells[opc - 1]->getName() << endl;

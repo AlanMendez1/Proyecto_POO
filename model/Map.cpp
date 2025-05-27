@@ -12,9 +12,9 @@ bool Map::collision(int index){
     return this->tileSet[index] == "#";
 }
 
-void Map::drawMap(Player* player, vector<Enemy*> enemies, vector<Pickup*> pickups){
+void Map::drawMap(Player* player, vector<Enemy*> enemies, vector<Pickup*> pickups, vector<Ally*> allies){
     int playerIndexCalculated = player->getPosition().second * 20 + player->getPosition().first;
-    int enemyIndex, pickupIndex;
+    int enemyIndex, pickupIndex, allyIndex;
     bool flag;
     for(int i = 0; i < 400; i++){
         if(i % 20 == 0){
@@ -36,6 +36,13 @@ void Map::drawMap(Player* player, vector<Enemy*> enemies, vector<Pickup*> pickup
                 if(i == pickupIndex){
                     flag = false;
                     pickups[k]->showSprite();
+                }
+            }
+            for(int l = 0; l < allies.size(); l++){
+                allyIndex = allies[l]->getPosition().second * 20 + allies[l]->getPosition().first;
+                if(i == allyIndex){
+                    flag = false;
+                    allies[l]->showSprite();
                 }
             }
             if(flag){

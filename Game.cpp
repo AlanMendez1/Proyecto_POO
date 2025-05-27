@@ -18,6 +18,13 @@ void Game::startGame(){
     int newIndex, oldEnemyIndex, oldIndex, newEnemyIndex, itemIndex, itemToDelete, enemyToFight;
     bool battleFlag, win = false, lose = false, pickedFlag;
     cout << "This is " << this->name << ", the adventure begins..." << endl;
+
+    Ally* ally1 = new Ally({12, 12});
+    Ally* ally2 = new Ally({10, 15});
+    Ally* ally3 = new Ally({3, 15});
+
+    vector<Ally*> allies = {ally1, ally2, ally3};
+
     // 15 pickups amarillas (valor 10)
     Pickup* pickup1  = new Pickup("\033[1;33m☻\033[0m", 10, {1,  1});
     Pickup* pickup2  = new Pickup("\033[1;33m☻\033[0m", 10, {1,  3});
@@ -181,7 +188,7 @@ void Game::startGame(){
         }
 
         
-        board->drawMap(j1, enemies, pickups);
+        board->drawMap(j1, enemies, pickups, allies);
     }
     cout << "\nSE ACABO" << endl;
 };

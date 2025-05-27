@@ -7,6 +7,7 @@
 #include "model/Spell.h"
 #include "model/Map.h"
 #include "model/Battle.h"
+#include "model/Ally.h"
 
 #include <string>
 #include <vector>
